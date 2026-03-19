@@ -1,1 +1,216 @@
 
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NUSACYBERA – Laporan & Keluar Grup</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+<style>
+  :root{--cyan:#00f5ff;--cyan2:#00b4d8;--gold:#ffd166;--gold2:#f4a51b;--red:#ff4d6d;--green:#06ffa5;--dark:#020c1b;--dark2:#071428;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{min-height:100vh;background:#010810;font-family:'Rajdhani',sans-serif;padding:24px 16px 60px;}
+  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,245,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,245,255,0.03) 1px,transparent 1px);background-size:40px 40px;z-index:0;}
+  .wrap{position:relative;z-index:1;width:100%;max-width:460px;margin:0 auto;}
+  .header{text-align:center;margin-bottom:22px;}
+  .shield-svg{width:56px;height:63px;filter:drop-shadow(0 0 12px var(--cyan));margin-bottom:8px;}
+  .org-name{font-family:'Orbitron',monospace;font-size:22px;font-weight:900;letter-spacing:5px;background:linear-gradient(90deg,var(--cyan),#fff,var(--cyan2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .tagline{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:4px;margin-top:4px;opacity:0.85;}
+  .tabs{display:flex;gap:8px;margin-bottom:18px;}
+  .tab{flex:1;padding:12px;border-radius:12px;border:1.5px solid rgba(0,245,255,0.2);background:rgba(0,0,0,0.3);color:var(--cyan2);font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:1px;cursor:pointer;text-align:center;transition:all 0.2s;}
+  .tab.active.laporan{border-color:var(--red);color:var(--red);background:rgba(255,77,109,0.1);}
+  .tab.active.keluar{border-color:var(--gold);color:var(--gold);background:rgba(255,209,102,0.1);}
+  .tab:hover{border-color:rgba(0,245,255,0.4);}
+  .card{background:rgba(7,20,40,0.9);border:1px solid rgba(0,245,255,0.2);border-radius:16px;padding:22px 20px;position:relative;overflow:hidden;margin-bottom:14px;}
+  .card.red-card{border-color:rgba(255,77,109,0.3);}
+  .card.red-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--red),transparent);}
+  .card.gold-card{border-color:rgba(255,209,102,0.3);}
+  .card.gold-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+  .card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);}
+  .card-corner{position:absolute;width:12px;height:12px;}
+  .cc-tl{top:8px;left:8px;border-top:1.5px solid rgba(255,209,102,0.4);border-left:1.5px solid rgba(255,209,102,0.4);}
+  .cc-tr{top:8px;right:8px;border-top:1.5px solid rgba(255,209,102,0.4);border-right:1.5px solid rgba(255,209,102,0.4);}
+  .cc-bl{bottom:8px;left:8px;border-bottom:1.5px solid rgba(255,209,102,0.4);border-left:1.5px solid rgba(255,209,102,0.4);}
+  .cc-br{bottom:8px;right:8px;border-bottom:1.5px solid rgba(255,209,102,0.4);border-right:1.5px solid rgba(255,209,102,0.4);}
+  .card-title{font-family:'Orbitron',monospace;font-size:13px;font-weight:700;letter-spacing:3px;margin-bottom:16px;}
+  .card-title.red{color:var(--red);}
+  .card-title.gold{color:var(--gold);}
+  .form-group{margin-bottom:14px;}
+  .form-label{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cyan2);letter-spacing:3px;margin-bottom:6px;display:block;}
+  .form-input,.form-select,.form-textarea{width:100%;background:rgba(0,0,0,0.4);border:1px solid rgba(0,245,255,0.2);border-radius:8px;padding:10px 14px;color:#e8f4ff;font-family:'Rajdhani',sans-serif;font-size:14px;outline:none;transition:border-color 0.3s;}
+  .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--cyan);box-shadow:0 0 10px rgba(0,245,255,0.08);}
+  .form-select option{background:#071428;}
+  .form-textarea{resize:vertical;min-height:80px;}
+  .kat-wrap{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px;}
+  .kat-chip{padding:6px 12px;border-radius:20px;border:1px solid rgba(0,245,255,0.2);background:rgba(0,0,0,0.3);color:var(--cyan2);font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:1px;cursor:pointer;transition:all 0.2s;}
+  .kat-chip.active{background:rgba(255,77,109,0.15);border-color:var(--red);color:var(--red);}
+  .kat-chip.active-gold{background:rgba(255,209,102,0.15);border-color:var(--gold);color:var(--gold);}
+  .btn-submit{width:100%;padding:14px;border-radius:12px;border:1.5px solid var(--red);background:rgba(255,77,109,0.12);color:var(--red);font-family:'Orbitron',monospace;font-size:12px;font-weight:700;letter-spacing:3px;cursor:pointer;transition:all 0.3s;margin-top:4px;}
+  .btn-submit:hover{background:rgba(255,77,109,0.25);box-shadow:0 0 20px rgba(255,77,109,0.2);}
+  .btn-submit.gold{border-color:var(--gold);background:rgba(255,209,102,0.12);color:var(--gold);}
+  .btn-submit.gold:hover{background:rgba(255,209,102,0.25);box-shadow:0 0 20px rgba(255,209,102,0.2);}
+  .divider{display:flex;align-items:center;gap:10px;margin:16px 0;}
+  .divider-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--cyan2),transparent);}
+  .divider-dot{width:5px;height:5px;background:var(--cyan);border-radius:50%;box-shadow:0 0 6px var(--cyan);}
+  .admin-title{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:4px;text-align:center;margin-bottom:12px;}
+  .admin-card{background:rgba(7,20,40,0.8);border:1px solid rgba(0,245,255,0.12);border-radius:10px;padding:10px 14px;display:flex;align-items:center;gap:12px;margin-bottom:8px;}
+  .admin-av{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--cyan);background:var(--dark2);display:flex;align-items:center;justify-content:center;font-family:'Orbitron',monospace;font-size:12px;font-weight:900;color:var(--cyan);flex-shrink:0;}
+  .admin-av.owner{border-color:var(--gold);color:var(--gold);}
+  .admin-info{flex:1;}
+  .admin-role{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--gold);letter-spacing:2px;}
+  .admin-name{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:#e8f4ff;}
+  .btn-wa{padding:7px 14px;border-radius:20px;border:1.5px solid var(--green);background:rgba(6,255,165,0.1);color:var(--green);font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:1px;text-decoration:none;transition:all 0.2s;white-space:nowrap;display:flex;align-items:center;gap:5px;}
+  .btn-wa:hover{background:rgba(6,255,165,0.2);}
+  .warning-box{background:rgba(255,77,109,0.08);border:1px solid rgba(255,77,109,0.25);border-radius:10px;padding:12px 14px;margin-bottom:14px;font-family:'Rajdhani',sans-serif;font-size:13px;color:#ffcdd2;line-height:1.7;}
+  .warning-box.gold-warn{background:rgba(255,209,102,0.08);border-color:rgba(255,209,102,0.25);color:#fff3cd;}
+  .footer{text-align:center;margin-top:20px;}
+  .footer-brand{font-family:'Orbitron',monospace;font-size:13px;font-weight:900;letter-spacing:5px;background:linear-gradient(90deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .footer-sub{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(0,245,255,0.3);letter-spacing:3px;margin-top:4px;}
+  .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:rgba(6,255,165,0.15);border:1px solid var(--green);color:var(--green);font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;padding:10px 20px;border-radius:20px;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:99;white-space:nowrap;}
+  .toast.show{opacity:1;}
+  .page{display:none;}
+  .page.active{display:block;animation:fadeIn 0.3s ease;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <svg class="shield-svg" viewBox="0 0 80 90" fill="none">
+      <path d="M40 4 L76 18 L76 52 Q76 74 40 86 Q4 74 4 52 L4 18 Z" fill="#071428" stroke="#00f5ff" stroke-width="2"/>
+      <path d="M40 12 L68 24 L68 50 Q68 68 40 78 Q12 68 12 50 L12 24 Z" fill="none" stroke="rgba(0,245,255,0.3)" stroke-width="1"/>
+      <text x="40" y="58" font-family="Arial Black" font-size="26" font-weight="900" fill="#00f5ff" text-anchor="middle">NC</text>
+    </svg>
+    <div class="org-name">NUSACYBERA</div>
+    <div class="tagline">◈ LAPORAN & KELUAR GRUP ◈</div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active laporan" onclick="switchTab('laporan', this)">🚨 LAPORAN</div>
+    <div class="tab keluar" onclick="switchTab('keluar', this)">🚪 KELUAR GRUP</div>
+  </div>
+
+  <!-- PAGE LAPORAN -->
+  <div class="page active" id="page-laporan">
+    <div class="warning-box">
+      ⚠️ <strong>Laporan bersifat privat!</strong> Hanya admin yang bisa melihat isi laporanmu. Gunakan fitur ini dengan bijak & bertanggung jawab! 🛡️
+    </div>
+    <div class="card red-card">
+      <div class="card-corner cc-tl"></div><div class="card-corner cc-tr"></div>
+      <div class="card-corner cc-bl"></div><div class="card-corner cc-br"></div>
+      <div class="card-title red">🚨 FORM LAPORAN MEMBER</div>
+      <div class="form-group">
+        <label class="form-label">◈ NAMA KAMU</label>
+        <input class="form-input" id="namaPelapor" type="text" placeholder="Masukkan nama kamu..."/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">◈ NAMA TERLAPOR</label>
+        <input class="form-input" id="namaTerlapor" type="text" placeholder="Siapa yang dilaporkan?"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">◈ KATEGORI LAPORAN</label>
+        <div class="kat-wrap" id="katLaporan">
+          <div class="kat-chip" onclick="pilihKat(this,'laporan')">🚫 Toxic</div>
+          <div class="kat-chip" onclick="pilihKat(this,'laporan')">😡 Bullying</div>
+          <div class="kat-chip" onclick="pilihKat(this,'laporan')">🔞 Konten 18+</div>
+          <div class="kat-chip" onclick="pilihKat(this,'laporan')">🤬 Rasisme</div>
+          <div class="kat-chip" onclick="pilihKat(this,'laporan')">🕌 Isu Agama</div>
+          <div class="kat-chip" onclick="pilihKat(this,'laporan')">📢 Spam</div>
+          <div class="kat-chip" onclick="pilihKat(this,'laporan')">⚠️ Lainnya</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">◈ DETAIL LAPORAN</label>
+        <textarea class="form-textarea" id="detailLaporan" placeholder="Ceritakan apa yang terjadi secara detail..."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">◈ TUJUKAN KE ADMIN</label>
+        <select class="form-select" id="adminLaporan">
+          <option value="">-- Pilih Admin --</option>
+          <option value="6285236936481">👑 Head Admin — Risky</option>
+          <option value="6287845024546">🛡️ Moderator — Wildan</option>
+          <option value="6283857684032">🛡️ Admin — Louis</option>
+          <option value="6289533224099">🛡️ Admin — King</option>
+        </select>
+      </div>
+      <button class="btn-submit" onclick="kirimLaporan()">🚨 KIRIM LAPORAN</button>
+    </div>
+    <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+    <div class="admin-title">◈ ATAU HUBUNGI ADMIN LANGSUNG ◈</div>
+    <div class="admin-card"><div class="admin-av owner">R</div><div class="admin-info"><div class="admin-role">👑 HEAD ADMIN</div><div class="admin-name">Risky</div></div><a class="btn-wa" href="https://wa.me/6285236936481" target="_blank">💬 WA</a></div>
+    <div class="admin-card"><div class="admin-av">W</div><div class="admin-info"><div class="admin-role">🛡️ MODERATOR</div><div class="admin-name">Wildan</div></div><a class="btn-wa" href="https://wa.me/6287845024546" target="_blank">💬 WA</a></div>
+    <div class="admin-card"><div class="admin-av">L</div><div class="admin-info"><div class="admin-role">🛡️ ADMIN</div><div class="admin-name">Louis</div></div><a class="btn-wa" href="https://wa.me/6283857684032" target="_blank">💬 WA</a></div>
+    <div class="admin-card"><div class="admin-av">K</div><div class="admin-info"><div class="admin-role">🛡️ ADMIN</div><div class="admin-name">King</div></div><a class="btn-wa" href="https://wa.me/6289533224099" target="_blank">💬 WA</a></div>
+  </div>
+
+  <!-- PAGE KELUAR -->
+  <div class="page" id="page-keluar">
+    <div class="warning-box gold-warn">
+      💛 Kami sedih kamu ingin meninggalkan NUSACYBERA. Tapi kami menghormati keputusanmu! Isi form ini agar kami bisa terus berkembang. 🙏
+    </div>
+    <div class="card gold-card">
+      <div class="card-corner cc-tl"></div><div class="card-corner cc-tr"></div>
+      <div class="card-corner cc-bl"></div><div class="card-corner cc-br"></div>
+      <div class="card-title gold">🚪 FORM KELUAR GRUP</div>
+      <div class="form-group">
+        <label class="form-label">◈ NAMA KAMU</label>
+        <input class="form-input" id="namaKeluar" type="text" placeholder="Masukkan nama kamu..."/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">◈ ALASAN KELUAR</label>
+        <div class="kat-wrap" id="katKeluar">
+          <div class="kat-chip" onclick="pilihKat(this,'keluar')">😴 Tidak aktif</div>
+          <div class="kat-chip" onclick="pilihKat(this,'keluar')">🔇 Terlalu ramai</div>
+          <div class="kat-chip" onclick="pilihKat(this,'keluar')">😔 Tidak cocok</div>
+          <div class="kat-chip" onclick="pilihKat(this,'keluar')">💼 Kesibukan</div>
+          <div class="kat-chip" onclick="pilihKat(this,'keluar')">😤 Ada masalah</div>
+          <div class="kat-chip" onclick="pilihKat(this,'keluar')">🔄 Alasan lain</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">◈ TUJUKAN KE ADMIN</label>
+        <select class="form-select" id="adminKeluar">
+          <option value="">-- Pilih Admin --</option>
+          <option value="6285236936481">👑 Head Admin — Risky</option>
+          <option value="6287845024546">🛡️ Moderator — Wildan</option>
+          <option value="6283857684032">🛡️ Admin — Louis</option>
+          <option value="6289533224099">🛡️ Admin — King</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">◈ DETAIL ALASAN (opsional)</label>
+        <textarea class="form-textarea" id="detailKeluar" placeholder="Ceritakan lebih lanjut alasanmu... (opsional)"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">◈ SARAN UNTUK NUSACYBERA (opsional)</label>
+        <textarea class="form-textarea" id="saranKeluar" placeholder="Ada saran untuk kami? Kami sangat menghargainya! 🙏"></textarea>
+      </div>
+      <button class="btn-submit gold" onclick="kirimKeluar()">🚪 KIRIM KE ADMIN</button>
+    </div>
+    <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+    <div class="admin-title">◈ ATAU HUBUNGI ADMIN LANGSUNG ◈</div>
+    <div class="admin-card"><div class="admin-av owner">R</div><div class="admin-info"><div class="admin-role">👑 HEAD ADMIN</div><div class="admin-name">Risky</div></div><a class="btn-wa" href="https://wa.me/6285236936481" target="_blank">💬 WA</a></div>
+    <div class="admin-card"><div class="admin-av">W</div><div class="admin-info"><div class="admin-role">🛡️ MODERATOR</div><div class="admin-name">Wildan</div></div><a class="btn-wa" href="https://wa.me/6287845024546" target="_blank">💬 WA</a></div>
+    <div class="admin-card"><div class="admin-av">L</div><div class="admin-info"><div class="admin-role">🛡️ ADMIN</div><div class="admin-name">Louis</div></div><a class="btn-wa" href="https://wa.me/6283857684032" target="_blank">💬 WA</a></div>
+    <div class="admin-card"><div class="admin-av">K</div><div class="admin-info"><div class="admin-role">🛡️ ADMIN</div><div class="admin-name">King</div></div><a class="btn-wa" href="https://wa.me/6289533224099" target="_blank">💬 WA</a></div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-brand">NUSACYBERA</div>
+    <div class="footer-sub">ADMIN & MODERATOR TEAM 🇮🇩</div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+  let katLaporan = '';
+  let katKeluar = '';
+  function switchTab(tab, el){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active','laporan','keluar'));document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));el.classList.add('active',tab);document.getElementById('page-'+tab).classList.add('active');}
+  function pilihKat(el,type){const wrap=type==='laporan'?'katLaporan':'katKeluar';const activeClass=type==='laporan'?'active':'active-gold';document.querySelectorAll(`#${wrap} .kat-chip`).forEach(c=>c.classList.remove('active','active-gold'));el.classList.add(activeClass);if(type==='laporan')katLaporan=el.textContent.trim();else katKeluar=el.textContent.trim();}
+  function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
+  function kirimLaporan(){const nama=document.getElementById('namaPelapor').value.trim();const terlapor=document.getElementById('namaTerlapor').value.trim();const detail=document.getElementById('detailLaporan').value.trim();const adminNum=document.getElementById('adminLaporan').value;if(!nama){showToast('⚠️ Isi nama kamu dulu!');return;}if(!terlapor){showToast('⚠️ Isi nama terlapor dulu!');return;}if(!katLaporan){showToast('⚠️ Pilih kategori laporan!');return;}if(!detail){showToast('⚠️ Isi detail laporan dulu!');return;}if(!adminNum){showToast('⚠️ Pilih tujuan admin!');return;}const pesan=`🚨 *LAPORAN MEMBER NUSACYBERA* 🚨\n\n👤 *Pelapor:* ${nama}\n🎯 *Terlapor:* ${terlapor}\n📋 *Kategori:* ${katLaporan}\n\n📝 *Detail Laporan:*\n${detail}\n\n━━━━━━━━━━━━━━━\n🛡️ _Dikirim via NUSACYBERA Report System_`;window.open(`https://wa.me/${adminNum}?text=${encodeURIComponent(pesan)}`,'_blank');showToast('✅ Membuka WhatsApp admin...');}
+  function kirimKeluar(){const nama=document.getElementById('namaKeluar').value.trim();const detail=document.getElementById('detailKeluar').value.trim();const saran=document.getElementById('saranKeluar').value.trim();const adminNum=document.getElementById('adminKeluar').value;if(!nama){showToast('⚠️ Isi nama kamu dulu!');return;}if(!katKeluar){showToast('⚠️ Pilih alasan keluar!');return;}if(!adminNum){showToast('⚠️ Pilih tujuan admin!');return;}const pesan=`🚪 *PERMINTAAN KELUAR GRUP NUSACYBERA* 🚪\n\n👤 *Nama:* ${nama}\n🎯 *Alasan:* ${katKeluar}\n${detail?`📝 *Detail:* ${detail}`:''}\n${saran?`💡 *Saran:* ${saran}`:''}\n\n━━━━━━━━━━━━━━━\n🛡️ _Dikirim via NUSACYBERA Exit System_`;window.open(`https://wa.me/${adminNum}?text=${encodeURIComponent(pesan)}`,'_blank');showToast('✅ Membuka WhatsApp admin...');}
+</script>
+</body>
+</html>
