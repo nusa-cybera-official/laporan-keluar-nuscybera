@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>NUSACYBERA – Laporan & Keluar Grup</title>
+<title>NUSACYBERA – Laporan &amp; Keluar Grup</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
 <style>
   :root{--cyan:#00f5ff;--cyan2:#00b4d8;--gold:#ffd166;--gold2:#f4a51b;--red:#ff4d6d;--green:#06ffa5;--dark:#020c1b;--dark2:#071428;}
@@ -60,7 +59,7 @@
   .admin-role{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--gold);letter-spacing:2px;}
   .admin-name{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:#e8f4ff;}
   .btn-wa{padding:7px 14px;border-radius:20px;border:1.5px solid var(--green);background:rgba(6,255,165,0.1);color:var(--green);font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:1px;text-decoration:none;transition:all 0.2s;white-space:nowrap;display:flex;align-items:center;gap:5px;}
-  .btn-wa:hover{background:rgba(6,255,165,0.2);}
+  .btn-wa:hover{background:rgba(6,255,165,0.2);box-shadow:0 0 10px rgba(6,255,165,0.2);}
   .warning-box{background:rgba(255,77,109,0.08);border:1px solid rgba(255,77,109,0.25);border-radius:10px;padding:12px 14px;margin-bottom:14px;font-family:'Rajdhani',sans-serif;font-size:13px;color:#ffcdd2;line-height:1.7;}
   .warning-box.gold-warn{background:rgba(255,209,102,0.08);border-color:rgba(255,209,102,0.25);color:#fff3cd;}
   .footer{text-align:center;margin-top:20px;}
@@ -76,6 +75,7 @@
 <body>
 <div class="wrap">
 
+  <!-- HEADER -->
   <div class="header">
     <svg class="shield-svg" viewBox="0 0 80 90" fill="none">
       <path d="M40 4 L76 18 L76 52 Q76 74 40 86 Q4 74 4 52 L4 18 Z" fill="#071428" stroke="#00f5ff" stroke-width="2"/>
@@ -83,134 +83,176 @@
       <text x="40" y="58" font-family="Arial Black" font-size="26" font-weight="900" fill="#00f5ff" text-anchor="middle">NC</text>
     </svg>
     <div class="org-name">NUSACYBERA</div>
-    <div class="tagline">◈ LAPORAN & KELUAR GRUP ◈</div>
+    <div class="tagline">&#9672; LAPORAN &amp; KELUAR GRUP &#9672;</div>
   </div>
 
+  <!-- TABS -->
   <div class="tabs">
-    <div class="tab active laporan" onclick="switchTab('laporan', this)">🚨 LAPORAN</div>
-    <div class="tab keluar" onclick="switchTab('keluar', this)">🚪 KELUAR GRUP</div>
+    <div class="tab active laporan" onclick="switchTab('laporan', this)">&#128680; LAPORAN</div>
+    <div class="tab keluar" onclick="switchTab('keluar', this)">&#128682; KELUAR GRUP</div>
   </div>
 
   <!-- PAGE LAPORAN -->
   <div class="page active" id="page-laporan">
-    <div class="warning-box">
-      ⚠️ <strong>Laporan bersifat privat!</strong> Hanya admin yang bisa melihat isi laporanmu. Gunakan fitur ini dengan bijak & bertanggung jawab! 🛡️
-    </div>
+    <div class="warning-box">&#9888;&#65039; <strong>Laporan bersifat privat!</strong> Hanya admin yang bisa melihat isi laporanmu. Gunakan fitur ini dengan bijak &amp; bertanggung jawab! &#128737;&#65039;</div>
     <div class="card red-card">
       <div class="card-corner cc-tl"></div><div class="card-corner cc-tr"></div>
       <div class="card-corner cc-bl"></div><div class="card-corner cc-br"></div>
-      <div class="card-title red">🚨 FORM LAPORAN MEMBER</div>
+      <div class="card-title red">&#128680; FORM LAPORAN MEMBER</div>
       <div class="form-group">
-        <label class="form-label">◈ NAMA KAMU</label>
+        <label class="form-label">&#9672; NAMA KAMU</label>
         <input class="form-input" id="namaPelapor" type="text" placeholder="Masukkan nama kamu..."/>
       </div>
       <div class="form-group">
-        <label class="form-label">◈ NAMA TERLAPOR</label>
+        <label class="form-label">&#9672; NAMA TERLAPOR</label>
         <input class="form-input" id="namaTerlapor" type="text" placeholder="Siapa yang dilaporkan?"/>
       </div>
       <div class="form-group">
-        <label class="form-label">◈ KATEGORI LAPORAN</label>
+        <label class="form-label">&#9672; KATEGORI LAPORAN</label>
         <div class="kat-wrap" id="katLaporan">
-          <div class="kat-chip" onclick="pilihKat(this,'laporan')">🚫 Toxic</div>
-          <div class="kat-chip" onclick="pilihKat(this,'laporan')">😡 Bullying</div>
-          <div class="kat-chip" onclick="pilihKat(this,'laporan')">🔞 Konten 18+</div>
-          <div class="kat-chip" onclick="pilihKat(this,'laporan')">🤬 Rasisme</div>
-          <div class="kat-chip" onclick="pilihKat(this,'laporan')">🕌 Isu Agama</div>
-          <div class="kat-chip" onclick="pilihKat(this,'laporan')">📢 Spam</div>
-          <div class="kat-chip" onclick="pilihKat(this,'laporan')">⚠️ Lainnya</div>
+          <div class="kat-chip" onclick="pilihKat(this,'laporan')">&#128683; Toxic</div>
+          <div class="kat-chip" onclick="pilihKat(this,'laporan')">&#128286; Konten Dewasa</div>
+          <div class="kat-chip" onclick="pilihKat(this,'laporan')">&#128162; Perundungan</div>
+          <div class="kat-chip" onclick="pilihKat(this,'laporan')">&#129324; Kata Kasar</div>
+          <div class="kat-chip" onclick="pilihKat(this,'laporan')">&#9888; Spam</div>
+          <div class="kat-chip" onclick="pilihKat(this,'laporan')">&#128203; Lainnya</div>
         </div>
       </div>
       <div class="form-group">
-        <label class="form-label">◈ DETAIL LAPORAN</label>
-        <textarea class="form-textarea" id="detailLaporan" placeholder="Ceritakan apa yang terjadi secara detail..."></textarea>
-      </div>
-      <div class="form-group">
-        <label class="form-label">◈ TUJUKAN KE ADMIN</label>
+        <label class="form-label">&#9672; TUJUKAN KE ADMIN</label>
         <select class="form-select" id="adminLaporan">
           <option value="">-- Pilih Admin --</option>
-          <option value="6285236936481">👑 Head Admin — Risky</option>
-          <option value="6287845024546">🛡️ Moderator — Wildan</option>
-          <option value="6283857684032">🛡️ Admin — Louis</option>
-          <option value="6289533224099">🛡️ Admin — King</option>
+          <option value="6285236936481">&#128081; Head Admin — Risky</option>
+          <option value="6287845024546">&#128737; Moderator — Wildan</option>
+          <option value="62889912444493">&#128737; Admin — Louis</option>
+          <option value="6289533224099">&#128737; Admin — King</option>
         </select>
       </div>
-      <button class="btn-submit" onclick="kirimLaporan()">🚨 KIRIM LAPORAN</button>
+      <div class="form-group">
+        <label class="form-label">&#9672; DETAIL LAPORAN</label>
+        <textarea class="form-textarea" id="detailLaporan" placeholder="Ceritakan kejadiannya secara detail..."></textarea>
+      </div>
+      <button class="btn-submit" onclick="kirimLaporan()">&#128680; KIRIM LAPORAN KE ADMIN</button>
     </div>
     <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
-    <div class="admin-title">◈ ATAU HUBUNGI ADMIN LANGSUNG ◈</div>
-    <div class="admin-card"><div class="admin-av owner">R</div><div class="admin-info"><div class="admin-role">👑 HEAD ADMIN</div><div class="admin-name">Risky</div></div><a class="btn-wa" href="https://wa.me/6285236936481" target="_blank">💬 WA</a></div>
-    <div class="admin-card"><div class="admin-av">W</div><div class="admin-info"><div class="admin-role">🛡️ MODERATOR</div><div class="admin-name">Wildan</div></div><a class="btn-wa" href="https://wa.me/6287845024546" target="_blank">💬 WA</a></div>
-    <div class="admin-card"><div class="admin-av">L</div><div class="admin-info"><div class="admin-role">🛡️ ADMIN</div><div class="admin-name">Louis</div></div><a class="btn-wa" href="https://wa.me/6283857684032" target="_blank">💬 WA</a></div>
-    <div class="admin-card"><div class="admin-av">K</div><div class="admin-info"><div class="admin-role">🛡️ ADMIN</div><div class="admin-name">King</div></div><a class="btn-wa" href="https://wa.me/6289533224099" target="_blank">💬 WA</a></div>
+    <div class="admin-title">&#9672; ATAU HUBUNGI ADMIN LANGSUNG &#9672;</div>
+    <div class="admin-card"><div class="admin-av owner">R</div><div class="admin-info"><div class="admin-role">&#128081; HEAD ADMIN</div><div class="admin-name">Risky</div></div><a class="btn-wa" href="https://wa.me/6285236936481" target="_blank">&#128172; WA</a></div>
+    <div class="admin-card"><div class="admin-av">W</div><div class="admin-info"><div class="admin-role">&#128737; MODERATOR</div><div class="admin-name">Wildan</div></div><a class="btn-wa" href="https://wa.me/6287845024546" target="_blank">&#128172; WA</a></div>
+    <div class="admin-card"><div class="admin-av">L</div><div class="admin-info"><div class="admin-role">&#128737; ADMIN</div><div class="admin-name">Louis</div></div><a class="btn-wa" href="https://wa.me/62889912444493" target="_blank">&#128172; WA</a></div>
+    <div class="admin-card"><div class="admin-av">K</div><div class="admin-info"><div class="admin-role">&#128737; ADMIN</div><div class="admin-name">King</div></div><a class="btn-wa" href="https://wa.me/6289533224099" target="_blank">&#128172; WA</a></div>
   </div>
 
-  <!-- PAGE KELUAR -->
+  <!-- PAGE KELUAR GRUP -->
   <div class="page" id="page-keluar">
-    <div class="warning-box gold-warn">
-      💛 Kami sedih kamu ingin meninggalkan NUSACYBERA. Tapi kami menghormati keputusanmu! Isi form ini agar kami bisa terus berkembang. 🙏
-    </div>
+    <div class="warning-box gold-warn">&#128532; Sayang sekali kamu ingin keluar dari NUSACYBERA! Isi form ini dengan jujur &amp; sopan ya. Pintu NUSACYBERA selalu terbuka kalau kamu ingin kembali! &#128591;</div>
     <div class="card gold-card">
       <div class="card-corner cc-tl"></div><div class="card-corner cc-tr"></div>
       <div class="card-corner cc-bl"></div><div class="card-corner cc-br"></div>
-      <div class="card-title gold">🚪 FORM KELUAR GRUP</div>
+      <div class="card-title gold">&#128682; FORM KELUAR GRUP</div>
       <div class="form-group">
-        <label class="form-label">◈ NAMA KAMU</label>
+        <label class="form-label">&#9672; NAMA KAMU</label>
         <input class="form-input" id="namaKeluar" type="text" placeholder="Masukkan nama kamu..."/>
       </div>
       <div class="form-group">
-        <label class="form-label">◈ ALASAN KELUAR</label>
+        <label class="form-label">&#9672; ALASAN KELUAR</label>
         <div class="kat-wrap" id="katKeluar">
-          <div class="kat-chip" onclick="pilihKat(this,'keluar')">😴 Tidak aktif</div>
-          <div class="kat-chip" onclick="pilihKat(this,'keluar')">🔇 Terlalu ramai</div>
-          <div class="kat-chip" onclick="pilihKat(this,'keluar')">😔 Tidak cocok</div>
-          <div class="kat-chip" onclick="pilihKat(this,'keluar')">💼 Kesibukan</div>
-          <div class="kat-chip" onclick="pilihKat(this,'keluar')">😤 Ada masalah</div>
-          <div class="kat-chip" onclick="pilihKat(this,'keluar')">🔄 Alasan lain</div>
+          <div class="kat-chip" onclick="pilihKat(this,'keluar')">&#128564; Tidak Aktif</div>
+          <div class="kat-chip" onclick="pilihKat(this,'keluar')">&#128336; Tidak Ada Waktu</div>
+          <div class="kat-chip" onclick="pilihKat(this,'keluar')">&#128532; Tidak Nyaman</div>
+          <div class="kat-chip" onclick="pilihKat(this,'keluar')">&#128263; Terlalu Ramai</div>
+          <div class="kat-chip" onclick="pilihKat(this,'keluar')">&#128260; Pindah Komunitas</div>
+          <div class="kat-chip" onclick="pilihKat(this,'keluar')">&#128203; Alasan Lain</div>
         </div>
       </div>
       <div class="form-group">
-        <label class="form-label">◈ TUJUKAN KE ADMIN</label>
+        <label class="form-label">&#9672; TUJUKAN KE ADMIN</label>
         <select class="form-select" id="adminKeluar">
           <option value="">-- Pilih Admin --</option>
-          <option value="6285236936481">👑 Head Admin — Risky</option>
-          <option value="6287845024546">🛡️ Moderator — Wildan</option>
-          <option value="6283857684032">🛡️ Admin — Louis</option>
-          <option value="6289533224099">🛡️ Admin — King</option>
+          <option value="6285236936481">&#128081; Head Admin — Risky</option>
+          <option value="6287845024546">&#128737; Moderator — Wildan</option>
+          <option value="62889912444493">&#128737; Admin — Louis</option>
+          <option value="6289533224099">&#128737; Admin — King</option>
         </select>
       </div>
       <div class="form-group">
-        <label class="form-label">◈ DETAIL ALASAN (opsional)</label>
+        <label class="form-label">&#9672; DETAIL ALASAN (opsional)</label>
         <textarea class="form-textarea" id="detailKeluar" placeholder="Ceritakan lebih lanjut alasanmu... (opsional)"></textarea>
       </div>
       <div class="form-group">
-        <label class="form-label">◈ SARAN UNTUK NUSACYBERA (opsional)</label>
-        <textarea class="form-textarea" id="saranKeluar" placeholder="Ada saran untuk kami? Kami sangat menghargainya! 🙏"></textarea>
+        <label class="form-label">&#9672; SARAN UNTUK NUSACYBERA (opsional)</label>
+        <textarea class="form-textarea" id="saranKeluar" placeholder="Ada saran untuk kami? Kami sangat menghargainya! &#128591;"></textarea>
       </div>
-      <button class="btn-submit gold" onclick="kirimKeluar()">🚪 KIRIM KE ADMIN</button>
+      <button class="btn-submit gold" onclick="kirimKeluar()">&#128682; KIRIM KE ADMIN</button>
     </div>
     <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
-    <div class="admin-title">◈ ATAU HUBUNGI ADMIN LANGSUNG ◈</div>
-    <div class="admin-card"><div class="admin-av owner">R</div><div class="admin-info"><div class="admin-role">👑 HEAD ADMIN</div><div class="admin-name">Risky</div></div><a class="btn-wa" href="https://wa.me/6285236936481" target="_blank">💬 WA</a></div>
-    <div class="admin-card"><div class="admin-av">W</div><div class="admin-info"><div class="admin-role">🛡️ MODERATOR</div><div class="admin-name">Wildan</div></div><a class="btn-wa" href="https://wa.me/6287845024546" target="_blank">💬 WA</a></div>
-    <div class="admin-card"><div class="admin-av">L</div><div class="admin-info"><div class="admin-role">🛡️ ADMIN</div><div class="admin-name">Louis</div></div><a class="btn-wa" href="https://wa.me/6283857684032" target="_blank">💬 WA</a></div>
-    <div class="admin-card"><div class="admin-av">K</div><div class="admin-info"><div class="admin-role">🛡️ ADMIN</div><div class="admin-name">King</div></div><a class="btn-wa" href="https://wa.me/6289533224099" target="_blank">💬 WA</a></div>
+    <div class="admin-title">&#9672; ATAU HUBUNGI ADMIN LANGSUNG &#9672;</div>
+    <div class="admin-card"><div class="admin-av owner">R</div><div class="admin-info"><div class="admin-role">&#128081; HEAD ADMIN</div><div class="admin-name">Risky</div></div><a class="btn-wa" href="https://wa.me/6285236936481" target="_blank">&#128172; WA</a></div>
+    <div class="admin-card"><div class="admin-av">W</div><div class="admin-info"><div class="admin-role">&#128737; MODERATOR</div><div class="admin-name">Wildan</div></div><a class="btn-wa" href="https://wa.me/6287845024546" target="_blank">&#128172; WA</a></div>
+    <div class="admin-card"><div class="admin-av">L</div><div class="admin-info"><div class="admin-role">&#128737; ADMIN</div><div class="admin-name">Louis</div></div><a class="btn-wa" href="https://wa.me/62889912444493" target="_blank">&#128172; WA</a></div>
+    <div class="admin-card"><div class="admin-av">K</div><div class="admin-info"><div class="admin-role">&#128737; ADMIN</div><div class="admin-name">King</div></div><a class="btn-wa" href="https://wa.me/6289533224099" target="_blank">&#128172; WA</a></div>
   </div>
 
   <div class="footer">
     <div class="footer-brand">NUSACYBERA</div>
-    <div class="footer-sub">ADMIN & MODERATOR TEAM 🇮🇩</div>
+    <div class="footer-sub">ADMIN &amp; MODERATOR TEAM &#127470;&#127465;</div>
   </div>
+
 </div>
 <div class="toast" id="toast"></div>
 
 <script>
-  let katLaporan = '';
-  let katKeluar = '';
-  function switchTab(tab, el){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active','laporan','keluar'));document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));el.classList.add('active',tab);document.getElementById('page-'+tab).classList.add('active');}
-  function pilihKat(el,type){const wrap=type==='laporan'?'katLaporan':'katKeluar';const activeClass=type==='laporan'?'active':'active-gold';document.querySelectorAll(`#${wrap} .kat-chip`).forEach(c=>c.classList.remove('active','active-gold'));el.classList.add(activeClass);if(type==='laporan')katLaporan=el.textContent.trim();else katKeluar=el.textContent.trim();}
-  function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
-  function kirimLaporan(){const nama=document.getElementById('namaPelapor').value.trim();const terlapor=document.getElementById('namaTerlapor').value.trim();const detail=document.getElementById('detailLaporan').value.trim();const adminNum=document.getElementById('adminLaporan').value;if(!nama){showToast('⚠️ Isi nama kamu dulu!');return;}if(!terlapor){showToast('⚠️ Isi nama terlapor dulu!');return;}if(!katLaporan){showToast('⚠️ Pilih kategori laporan!');return;}if(!detail){showToast('⚠️ Isi detail laporan dulu!');return;}if(!adminNum){showToast('⚠️ Pilih tujuan admin!');return;}const pesan=`🚨 *LAPORAN MEMBER NUSACYBERA* 🚨\n\n👤 *Pelapor:* ${nama}\n🎯 *Terlapor:* ${terlapor}\n📋 *Kategori:* ${katLaporan}\n\n📝 *Detail Laporan:*\n${detail}\n\n━━━━━━━━━━━━━━━\n🛡️ _Dikirim via NUSACYBERA Report System_`;window.open(`https://wa.me/${adminNum}?text=${encodeURIComponent(pesan)}`,'_blank');showToast('✅ Membuka WhatsApp admin...');}
-  function kirimKeluar(){const nama=document.getElementById('namaKeluar').value.trim();const detail=document.getElementById('detailKeluar').value.trim();const saran=document.getElementById('saranKeluar').value.trim();const adminNum=document.getElementById('adminKeluar').value;if(!nama){showToast('⚠️ Isi nama kamu dulu!');return;}if(!katKeluar){showToast('⚠️ Pilih alasan keluar!');return;}if(!adminNum){showToast('⚠️ Pilih tujuan admin!');return;}const pesan=`🚪 *PERMINTAAN KELUAR GRUP NUSACYBERA* 🚪\n\n👤 *Nama:* ${nama}\n🎯 *Alasan:* ${katKeluar}\n${detail?`📝 *Detail:* ${detail}`:''}\n${saran?`💡 *Saran:* ${saran}`:''}\n\n━━━━━━━━━━━━━━━\n🛡️ _Dikirim via NUSACYBERA Exit System_`;window.open(`https://wa.me/${adminNum}?text=${encodeURIComponent(pesan)}`,'_blank');showToast('✅ Membuka WhatsApp admin...');}
+  let katLaporan='';
+  let katKeluar='';
+
+  function switchTab(tab,el){
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active','laporan','keluar'));
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    el.classList.add('active',tab);
+    document.getElementById('page-'+tab).classList.add('active');
+  }
+
+  function pilihKat(el,type){
+    const wrap=type==='laporan'?'katLaporan':'katKeluar';
+    const activeClass=type==='laporan'?'active':'active-gold';
+    document.querySelectorAll(`#${wrap==='katLaporan'?'katLaporan':'katKeluar'} .kat-chip`).forEach(c=>c.classList.remove('active','active-gold'));
+    el.classList.add(activeClass);
+    if(type==='laporan')katLaporan=el.textContent.trim();
+    else katKeluar=el.textContent.trim();
+  }
+
+  function showToast(msg){
+    const t=document.getElementById('toast');
+    t.textContent=msg;t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'),3000);
+  }
+
+  function kirimLaporan(){
+    const nama=document.getElementById('namaPelapor').value.trim();
+    const terlapor=document.getElementById('namaTerlapor').value.trim();
+    const detail=document.getElementById('detailLaporan').value.trim();
+    const adminNum=document.getElementById('adminLaporan').value;
+    if(!nama){showToast('&#9888;&#65039; Isi nama kamu dulu!');return;}
+    if(!terlapor){showToast('&#9888;&#65039; Isi nama terlapor dulu!');return;}
+    if(!katLaporan){showToast('&#9888;&#65039; Pilih kategori laporan!');return;}
+    if(!detail){showToast('&#9888;&#65039; Isi detail laporan dulu!');return;}
+    if(!adminNum){showToast('&#9888;&#65039; Pilih tujuan admin!');return;}
+    const pesan=`&#128680; *LAPORAN MEMBER NUSACYBERA* &#128680;\n\n&#128100; *Pelapor:* ${nama}\n&#127919; *Terlapor:* ${terlapor}\n&#128203; *Kategori:* ${katLaporan}\n\n&#128221; *Detail Laporan:*\n${detail}\n\n&#9473;&#9473;&#9473;&#9473;&#9473;&#9473;&#9473;\n&#128737;&#65039; _Dikirim via NUSACYBERA Report System_`;
+    window.open(`https://wa.me/${adminNum}?text=${encodeURIComponent(pesan)}`,'_blank');
+    showToast('&#10003; Membuka WhatsApp admin...');
+  }
+
+  function kirimKeluar(){
+    const nama=document.getElementById('namaKeluar').value.trim();
+    const detail=document.getElementById('detailKeluar').value.trim();
+    const saran=document.getElementById('saranKeluar').value.trim();
+    const adminNum=document.getElementById('adminKeluar').value;
+    if(!nama){showToast('&#9888;&#65039; Isi nama kamu dulu!');return;}
+    if(!katKeluar){showToast('&#9888;&#65039; Pilih alasan keluar!');return;}
+    if(!adminNum){showToast('&#9888;&#65039; Pilih tujuan admin!');return;}
+    const pesan=`&#128682; *PERMINTAAN KELUAR GRUP NUSACYBERA* &#128682;\n\n&#128100; *Nama:* ${nama}\n&#127919; *Alasan:* ${katKeluar}\n${detail?`&#128221; *Detail:* ${detail}\n`:''}${saran?`&#128161; *Saran:* ${saran}\n`:''}\n&#9473;&#9473;&#9473;&#9473;&#9473;&#9473;&#9473;\n&#128737;&#65039; _Dikirim via NUSACYBERA Exit System_`;
+    window.open(`https://wa.me/${adminNum}?text=${encodeURIComponent(pesan)}`,'_blank');
+    showToast('&#10003; Membuka WhatsApp admin...');
+  }
 </script>
 </body>
 </html>
